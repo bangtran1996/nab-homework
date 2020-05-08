@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  appdb:
+    image: postgres:11.3-alpine
+    restart: always
+    environment:
+        - POSTGRES_PASSWORD=change_me
+        - POSTGRES_DB=nab_db
+    ports:
+        - 5432
