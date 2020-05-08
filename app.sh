@@ -25,17 +25,6 @@ function module_install() {
     npm install
 }
 
-function infra() {
-  case $1 in
-  up)
-    infra_up
-    ;;
-  down)
-    infra_down
-    ;;
-  esac
-}
-
 function api() {
   case $1 in
   up)
