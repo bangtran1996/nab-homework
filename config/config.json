@@ -1,18 +1,8 @@
 {
-
-    
-
-    
-
-    
-
     "specialization": {
     },
 
     "middleware": {
-
-        
-
         "static": {
             "module": {
                 "arguments": [ "path:./.build" ]
