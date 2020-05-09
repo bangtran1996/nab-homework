@@ -40,6 +40,7 @@ const typeDefs = gql`
         price: Float
         brand_ids: [Int]
         category_ids: [Int]
+
     }
 
     input ProductCreateInput {
@@ -63,6 +64,7 @@ const typeDefs = gql`
 
     type Query {
         list_product(filterInput: ProductFilterInput): [Product]
+        get_product(productId: Int!): Product
     }
 
     type Mutation {

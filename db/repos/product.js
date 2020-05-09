@@ -13,7 +13,14 @@ const paginate = (query, { page, size }) => {
 
 module.exports = (product) => {
     return {
-        create: async(productInput) => product.create(productInput),
+        create: async (productInput) => product.create(productInput),
+        getByID: async (productId) => {
+            return product.findOne({
+                where: {
+                    id: productId,
+                }
+            })
+        },
         getByFilters: async (filters) => {
             let filterQuery = {
                 where: {

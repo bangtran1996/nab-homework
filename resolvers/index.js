@@ -1,12 +1,22 @@
 
 module.exports = {
     Query: {
-        async list_product(_, { filterInput: filter }, { repos }) {
+        async get_product(_, { productId }, { repos, req, res }) {
+            try {
+                const product = await repos.Product.getByID(productId);
+                return product;
+            } catch (error) {
+                return error;
+            }
+        },
+        async list_product(_, { filterInput: filter }, { repos, req, res }) {
             try {
                 const productsList = await repos.Product.getByFilters(filter);
                 return productsList;
             } catch (error) {
                 return error;
+            } finally {
+
             }
         },
     },

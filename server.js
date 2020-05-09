@@ -8,14 +8,14 @@ const crypto = require('./helpers/crypto');
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: ({ req }) => {
+    context: ({ req, res }) => {
         const headers = req.headers.authorization;
         let user = null;
         if (headers) {
             const token = headers.replace('Bearer ', '');
             user = crypto.getUserFromToken(token);
         }
-        return { repos, user }
+        return { repos, user, req, res }
     }
 })
 
