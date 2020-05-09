@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             field: 'price',
             allowNull: false,
         },
-        brand_id: {
+        brandId: {
             type: DataTypes.BIGINT,
             field: 'brand_id',
             references: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             }
         },
-        category_id: {
+        categoryId: {
             type: DataTypes.BIGINT,
             field: 'category_id',
             references: {
