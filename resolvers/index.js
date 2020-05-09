@@ -3,14 +3,18 @@ module.exports = {
     Query: {
         async list_product(_, { filterInput: filter }, { repos }) {
             try {
-                return await repos.Product.getByFilters(filter);
+                const productsList = await repos.Product.getByFilters(filter);
+                return productsList;
             } catch (error) {
                 return error;
             }
         },
     },
     Mutation: {
-        async create_product(_, { productCreateInput: createInput }, { repos }) {
+        async create_product(_, { productCreateInput: createInput }, { repos, user }) {
+            if (!user) {
+                return new Error('Need login, authentication required')
+            }
             try {
                 return await repos.Product.create({
                     name: createInput.name,
@@ -26,11 +30,14 @@ module.exports = {
                 return error;
             }
         },
-        async create_brand(_, { brandCreateInput: filter }, { repos }) {
+        async create_brand(_, { brandCreateInput: input }, { repos, user }) {
+            if (!user) {
+                return new Error('Need login, authentication required')
+            }
             try {
                 return await repos.Brand.create({
-                    name: filter.name,
-                    code: filter.code,
+                    name: input.name,
+                    code: input.code,
                     createdAt: Date.now(),
                     updatedAt: Date.now()
                 });
@@ -38,11 +45,14 @@ module.exports = {
                 return error;
             }
         },
-        async create_category(_, { categoryCreateInput: filter }, { repos }) {
+        async create_category(_, { categoryCreateInput: input }, { repos, user }) {
+            if (!user) {
+                return new Error('Need login, authentication required')
+            }
             try {
                 return await repos.Category.create({
-                    name: filter.name,
-                    type: filter.type,
+                    name: input.name,
+                    type: input.type,
                     createdAt: Date.now(),
                     updatedAt: Date.now()
                 });
