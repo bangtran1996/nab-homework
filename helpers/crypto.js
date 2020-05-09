@@ -3,13 +3,11 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/app');
 const bcrypt = require('bcrypt');
 
-bcrypt.hash('123456789', 10, function(err, hash) {
-    console.log('hash ', hash);
-});
 module.exports = {
     comparePass: (inputPass, passHash) => {
         return bcrypt.compare(inputPass, passHash);
     },
+
     createTokenFromUser: async payload => {
         try {
             return jwt.sign(
