@@ -1,8 +1,12 @@
+const fs = require('fs');
+const privateKey = fs.readFileSync('./config/rsa.pub.key');
+
 module.exports = {
     jwt: {
         secretToken: process.env.NAB_JWT_SECRET || '!@#!@asd',
         algorithm: process.env.NAB_JWT_ALGORITHM || 'RS256',
         expireIn:  process.env.NAB_JWT_EXPIRE_IN || '36h',
+        privateKey: process.env.NAB_JWT_PRIVATE_KEY || privateKey,
     },
     database: {
         name: process.env.NAB_DB_NAME || 'nab_db',

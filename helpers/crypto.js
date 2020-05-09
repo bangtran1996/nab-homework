@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/app');
 
 module.exports = {
-    createTokenFromUser: payload => {
+    createTokenFromUser: async payload => {
         try {
             return jwt.sign(
                 payload,
-                config.jwt.secretToken,
-                { algorithm: config.jwt.algorithm, expiresIn: config.jwt.expireIn })
+                config.jwt.privateKey,
+                { algorithm: config.jwt.algorithm, expiresIn: config.jwt.expireIn });
         } catch (e) {
             throw e
         }

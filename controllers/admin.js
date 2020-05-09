@@ -1,13 +1,37 @@
 
+const { errors } = require('../constants');
+const repo = require('../db/repos');
+const userLib = require('../helpers/crypto');
+
 module.exports = function (router) {
-    router.post('/login', function (req, res) {
+    router.post('/login', async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
-        if (!username || !password) {
-            return res.json({
+        try {
+            if (!username || !password) {
+                return res.status(400).json({
+                    errors: [errors.auth_missing_username_password],
+                    message: 'username or password missing',
+                });
+            }
 
+            const user = await repo.User.getByUsername(username);
+            if (!user) {
+                return res.status(404).json({
+                    errors: [errors.auth_account_not_found],
+                    message: 'account not found',
+                });
+            }
+
+            const token = await userLib.createTokenFromUser(user);
+            return res.status(200).json({
+                token
+            });
+        } catch (e) {
+            return res.status(500).json({
+                errors: [errors.internal_error],
+                message: e.message,
             });
         }
-
     });
 };
