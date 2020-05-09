@@ -1,14 +1,15 @@
-'use strict';
+const config = require('./config')
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('user', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
+      first_name: {
         type: Sequelize.STRING
       },
       lastName: {
@@ -17,17 +18,21 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      deleted_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, { ...config });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('user');
   }
 };
