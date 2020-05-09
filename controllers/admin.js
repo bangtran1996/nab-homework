@@ -2,7 +2,7 @@
 const { errors } = require('../constants');
 const repo = require('../db/repos');
 const userLib = require('../helpers/crypto');
-
+// $2b$10$3o/2tFO1M1CtC6bLoOwkZ.C3RpXtzvibS9Vbm.UerrgXzfy12/DNq
 module.exports = function (router) {
     router.post('/login', async (req, res) => {
         const username = req.body.username;
@@ -20,6 +20,14 @@ module.exports = function (router) {
                 return res.status(404).json({
                     errors: [errors.auth_account_not_found],
                     message: 'account not found',
+                });
+            }
+
+            const isValid = await userLib.comparePass(password, user.password);
+            if (!isValid) {
+                return res.status(401).json({
+                    errors: [errors.auth_incorrect_credential],
+                    message: 'invalid username/pass',
                 });
             }
 

@@ -27,12 +27,13 @@ function module_install() {
 
 function api() {
   case $1 in
-  up)
-    ### Check if a node_module does not exist ###
+  install_module)
     if [ ! -d "./node_modules" ]
     then
         module_install
     fi
+    ;;
+  up)
     infra_up
     app_up
     ;;
