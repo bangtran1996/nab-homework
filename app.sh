@@ -25,6 +25,11 @@ function module_install() {
     npm install
 }
 
+function test_app() {
+    echo "Test is running ..."
+    npm test
+}
+
 function api() {
   case $1 in
   install_module)
@@ -32,6 +37,9 @@ function api() {
     then
         module_install
     fi
+    ;;
+  test)
+    test_app
     ;;
   up)
     infra_up
