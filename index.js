@@ -2,8 +2,6 @@
 
 let express = require('express');
 let kraken = require('kraken-js');
-
-
 let options, app;
 
 /*

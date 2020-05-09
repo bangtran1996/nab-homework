@@ -10,6 +10,9 @@
         "all": "npm run build && npm run test"
     },
     "dependencies": {
+        "apollo-server": "^2.13.0",
+        "apollo-server-express": "^2.13.0",
+        "bcryptjs": "^2.4.3",
         "construx": "^1.0.0",
         "construx-copier": "^1.0.0",
         "eslint": "^1.10.3",

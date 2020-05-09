@@ -36,6 +36,9 @@ function api() {
     infra_up
     app_up
     ;;
+  migrate)
+    npx sequelize-cli db:migrate
+    ;;
   down)
     infra_down
     app_down

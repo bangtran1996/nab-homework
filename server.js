@@ -1,14 +1,17 @@
-let app = require('./index');
-let http = require('http');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers')
+const models = require('./db/models/index');
+const app = require('./index');
 
-let server;
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: { models }
+})
 
-/*
- * Create and start HTTP server.
- */
+server.applyMiddleware({ app })
 
-server = http.createServer(app);
-server.listen(process.env.PORT || 8000);
-server.on('listening', function () {
-    console.log('Server listening on http://localhost:%d', this.address().port);
+app.listen({port: process.env.PORT || 8000}, () => {
+    console.log(`🚀 GraphQL Server ready at ${server.graphqlPath}`)
 });
