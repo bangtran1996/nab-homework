@@ -10,10 +10,7 @@ let kraken = require('kraken-js'),
 
 
 describe('index', function () {
-
     let app, mock;
-
-
     beforeEach(function (done) {
         app = express();
         app.on('start', done);
@@ -22,6 +19,7 @@ describe('index', function () {
         }));
 
         mock = app.listen(1337);
+        this.timeout(200000);
 
     });
 
@@ -36,9 +34,7 @@ describe('index', function () {
             .get('/')
             .expect(200)
             .expect('Content-Type', /html/)
-
                 .expect(/"name": "index"/)
-
             .end(function (err, res) {
                 done(err);
             });

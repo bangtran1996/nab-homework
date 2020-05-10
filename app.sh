@@ -17,7 +17,7 @@ function infra_up() {
 
 function app_up() {
     echo "Starting app ..."
-    docker-compose -f docker/docker-compose.yml up
+    docker-compose -f docker/docker-compose.yml up api
 }
 
 function module_install() {
@@ -44,6 +44,7 @@ function api() {
   up)
     infra_up
     app_up
+    npm test
     ;;
   migrate)
     npx sequelize-cli db:migrate
