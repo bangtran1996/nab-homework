@@ -48,6 +48,9 @@ function api() {
   migrate)
     npx sequelize-cli db:migrate
     ;;
+  seed)
+    npx sequelize-cli db:seed:all
+    ;;
   down)
     infra_down
     app_down

@@ -40,7 +40,6 @@ const typeDefs = gql`
         price: Float
         brand_ids: [Int]
         category_ids: [Int]
-
     }
 
     input ProductCreateInput {

@@ -15,7 +15,8 @@ const server = new ApolloServer({
             const token = headers.replace('Bearer ', '');
             user = crypto.getUserFromToken(token);
         }
-        return { repos, user, req, res }
+
+        return { repos, user }
     }
 })
 

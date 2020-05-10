@@ -66,7 +66,7 @@ module.exports = {
                 field: 'deleted_at',
                 type: Sequelize.DATE
             }
-        }, { ...config });
+        }, { ...config }).then(() => queryInterface.addIndex('product', ['name']))
     },
     down: (queryInterface, Sequelize) => {
         return queryInterface.dropTable('product');
