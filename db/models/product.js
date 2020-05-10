@@ -69,6 +69,7 @@ module.exports = (sequelize, DataTypes) => {
         // associations can be defined here
         Product.belongsTo(models.brand, { foreignKey: 'brand_id' });
         Product.belongsTo(models.category, { foreignKey: 'category_id' });
+        Product.belongsTo(models.admin, { foreignKey: 'admin_id' });
     };
     return Product;
 };

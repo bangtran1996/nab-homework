@@ -52,6 +52,17 @@ module.exports = {
                     key: 'id'
                 }
             },
+            admin_id: {
+                type: Sequelize.BIGINT,
+                field: 'admin_id',
+                references: {
+                    model: {
+                        tableName: 'admin',
+                        schema: 'public'
+                    },
+                    key: 'id'
+                }
+            },
             createdAt: {
                 allowNull: false,
                 field: 'created_at',
