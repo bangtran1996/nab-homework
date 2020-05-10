@@ -1,8 +1,8 @@
 
-module.exports = (user) => {
+module.exports = (admin) => {
     return {
-        getByUsername: async (username) => {
-            return user.findOne({
+        getByAdminname: async (username) => {
+            return admin.findOne({
                 where: {
                     username
                 },

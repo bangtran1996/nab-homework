@@ -1,7 +1,7 @@
 const config = require('../config');
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('user', {
+    return queryInterface.createTable('admin', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -36,6 +36,6 @@ module.exports = {
     }, config);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('user');
+    return queryInterface.dropTable('admin');
   }
 };

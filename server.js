@@ -10,13 +10,13 @@ const server = new ApolloServer({
     resolvers,
     context: ({ req, res }) => {
         const headers = req.headers.authorization;
-        let user = null;
+        let admin = null;
         if (headers) {
             const token = headers.replace('Bearer ', '');
-            user = crypto.getUserFromToken(token);
+            admin = crypto.getAdminFromToken(token);
         }
 
-        return { repos, user }
+        return { repos, admin }
     }
 })
 

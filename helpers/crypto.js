@@ -8,7 +8,7 @@ module.exports = {
         return bcrypt.compare(inputPass, passHash);
     },
 
-    createTokenFromUser: async payload => {
+    createTokenFromAdmin: async payload => {
         try {
             return jwt.sign(
                 payload,
@@ -19,7 +19,7 @@ module.exports = {
         }
     },
 
-    getUserFromToken: jwtInputToken => {
+    getAdminFromToken: jwtInputToken => {
         try {
             if (jwtInputToken) {
                 return jwt.verify(jwtInputToken, config.jwt.privateKey, { algorithm: config.jwt.algorithm })

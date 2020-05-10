@@ -1,6 +1,6 @@
 const config = require('../config');
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('user', {
+    const Admin = sequelize.define('admin', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE
         }
     }, config);
-    User.associate = function (models) {
+    Admin.associate = function (models) {
         // associations can be defined here
     };
-    return User;
+    return Admin;
 };

@@ -15,15 +15,15 @@ module.exports = function (router) {
                 });
             }
 
-            const user = await repo.User.getByUsername(username);
-            if (!user) {
+            const admin = await repo.Admin.getByAdminname(username);
+            if (!admin) {
                 return res.status(404).json({
                     errors: [errors.auth_account_not_found],
                     message: 'account not found',
                 });
             }
 
-            const isValid = await userLib.comparePass(password, user.password);
+            const isValid = await userLib.comparePass(password, admin.password);
             if (!isValid) {
                 return res.status(401).json({
                     errors: [errors.auth_incorrect_credential],
@@ -31,7 +31,7 @@ module.exports = function (router) {
                 });
             }
 
-            const token = await userLib.createTokenFromUser(user);
+            const token = await userLib.createTokenFromAdmin(admin);
             return res.status(200).json({
                 token
             });
