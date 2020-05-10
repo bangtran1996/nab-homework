@@ -7,7 +7,7 @@ function infra_down() {
 
 function app_down() {
     echo "Downing app ..."
-    docker-compose -f docker/docker-compose.yml down api --remove-orphans
+    docker-compose -f docker/docker-compose.yml down --remove-orphans
 }
 
 function infra_up() {
