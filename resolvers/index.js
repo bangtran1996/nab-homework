@@ -24,9 +24,7 @@ module.exports = {
     },
     Mutation: {
         async create_product(_, { productCreateInput: createInput }, { repos, admin }) {
-            if (!admin) {
-                return new Error('Need login, authentication required')
-            }
+            if (!admin) return new Error('Need login, authentication required')
             try {
                 return await repos.Product.create({
                     name: createInput.name,
@@ -43,9 +41,7 @@ module.exports = {
             }
         },
         async create_brand(_, { brandCreateInput: input }, { repos, admin }) {
-            if (!admin) {
-                return new Error('Need login, authentication required')
-            }
+            if (!admin) return new Error('Need login, authentication required')
             try {
                 return await repos.Brand.create({
                     name: input.name,
@@ -58,9 +54,7 @@ module.exports = {
             }
         },
         async create_category(_, { categoryCreateInput: input }, { repos, admin }) {
-            if (!admin) {
-                return new Error('Need login, authentication required')
-            }
+            if (!admin) return new Error('Need login, authentication required')
             try {
                 return await repos.Category.create({
                     name: input.name,
