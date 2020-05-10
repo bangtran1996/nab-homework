@@ -7,7 +7,7 @@ function infra_down() {
 
 function app_down() {
     echo "Downing app ..."
-    docker-compose -f docker/docker-compose.yml down --remove-orphans
+    docker-compose -f docker/docker-compose.yml down api --remove-orphans
 }
 
 function infra_up() {
@@ -44,7 +44,6 @@ function api() {
   up)
     infra_up
     app_up
-    npm test
     ;;
   migrate)
     npx sequelize-cli db:migrate
