@@ -28,6 +28,17 @@ module.exports = (sequelize, DataTypes) => {
             field: 'price',
             allowNull: false,
         },
+        adminId: {
+            type: DataTypes.BIGINT,
+            field: 'admin_id',
+            references: {
+                model: {
+                    tableName: 'admin',
+                    schema: 'public'
+                },
+                key: 'id'
+            }
+        },
         brandId: {
             type: DataTypes.BIGINT,
             field: 'brand_id',

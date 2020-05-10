@@ -52,7 +52,7 @@ module.exports = {
                     key: 'id'
                 }
             },
-            admin_id: {
+            adminId: {
                 type: Sequelize.BIGINT,
                 field: 'admin_id',
                 references: {
