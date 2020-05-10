@@ -7,3 +7,8 @@ services:
     volumes:
         - ../:/usr/src/app
     command: bash -c "./app.sh api install_module && npm start"
+  api-test:
+    build: .
+    volumes:
+        - ../:/usr/src/app
+    command: bash -c "./app.sh api install_module && npm test"

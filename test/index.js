@@ -19,7 +19,6 @@ describe('index', function () {
         }));
 
         mock = app.listen(1337);
-        this.timeout(200000);
 
     });
 
@@ -33,8 +32,7 @@ describe('index', function () {
         request(mock)
             .get('/')
             .expect(200)
-            .expect('Content-Type', /html/)
-                .expect(/"name": "index"/)
+            .expect({"status": "ok"})
             .end(function (err, res) {
                 done(err);
             });

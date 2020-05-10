@@ -12,7 +12,7 @@ module.exports = function (grunt) {
     // Register group tasks
     grunt.registerTask('build', ['copyto']);
 
-    grunt.registerTask('test', [ 'mochacli' ]);
+    grunt.registerTask('test', ['mochacli']);
 
 
 };

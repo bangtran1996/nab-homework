@@ -25,9 +25,11 @@ function module_install() {
     npm install
 }
 
-function test_app() {
+function run_test() {
     echo "Test is running ..."
-    npm test
+    docker-compose -f docker/docker-compose.yml up api-test
+    docker-compose -f docker/docker-compose.yml down --remove-orphans
+    docker-compose -f docker/docker-compose.infra.yml down  --remove-orphans
 }
 
 function api() {
@@ -39,7 +41,8 @@ function api() {
     fi
     ;;
   test)
-    test_app
+    infra_up
+    run_test
     ;;
   up)
     infra_up
