@@ -51,7 +51,7 @@ function api() {
     infra_up
     run_test
     ;;
-  start)
+  init)
     infra_up
     sleep 5
     run_migration
