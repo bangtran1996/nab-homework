@@ -17,6 +17,7 @@ const resolvers = require('../resolvers')
 const repos = require('../db/repos');
 const { createTestClient } = require('apollo-server-testing');
 const { gql } = require('apollo-server');
+const queue = require('../db/redis/queue');
 
 const QUERY_GET_PRODUCT_BY_ID = gql`
   query getProduct($productId: Int!) {
@@ -53,7 +54,7 @@ describe('index', () => {
         graphQLServer = new ApolloServer({
             typeDefs,
             resolvers,
-            context: () => ({ repos, admin: { id: mockAdminUserID } }),
+            context: () => ({ repos, admin: { id: mockAdminUserID }, queue }),
         });
 
         graphlQLCreated = createTestClient(graphQLServer);
