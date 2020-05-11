@@ -1,5 +1,10 @@
 version: '3.3'
 services:
+  redis:
+    image: redis:5.0.6-alpine
+    restart: always
+    ports:
+        - 6379:6379
   appdb:
     image: postgres:11.3-alpine
     restart: always

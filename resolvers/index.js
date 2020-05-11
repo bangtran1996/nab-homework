@@ -1,24 +1,26 @@
 
 module.exports = {
     Query: {
-        async get_product(_, { productId }, { repos }) {
+        async get_product(_, { productId }, { repos, queue }) {
             try {
                 const product = await repos.Product.getByID(productId);
                 return product;
             } catch (error) {
                 return error;
             } finally {
-
+                // enqueue save user activity job
+                return queue.createUserActivity({ id: productId, action_type: 'view_detail' })
             }
         },
-        async list_product(_, { filterInput: filter }, { repos }) {
+        async list_product(_, { filterInput: filter }, { repos, queue }) {
             try {
                 const productsList = await repos.Product.getByFilters(filter);
                 return productsList;
             } catch (error) {
                 return error;
             } finally {
-
+                // enqueue save user activity job
+                queue.createUserActivity({ filters: '', action_type:'list_product' })
             }
         },
     },
@@ -36,7 +38,7 @@ module.exports = {
                     createdAt: Date.now(),
                     updatedAt: Date.now()
                 });
-            } catch(error) {
+            } catch (error) {
                 return error;
             }
         },
@@ -49,7 +51,7 @@ module.exports = {
                     createdAt: Date.now(),
                     updatedAt: Date.now()
                 });
-            } catch(error) {
+            } catch (error) {
                 return error;
             }
         },
@@ -62,7 +64,7 @@ module.exports = {
                     createdAt: Date.now(),
                     updatedAt: Date.now()
                 });
-            } catch(error) {
+            } catch (error) {
                 return error;
             }
         }
