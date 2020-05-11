@@ -14,10 +14,10 @@ module.exports = {
             type: 'clothe',
             created_at: new Date(),
             updated_at: new Date()
-        }], {});
+        }], {}).then(() => queryInterface.sequelize.query(`SELECT SETVAL('category_id_seq', (SELECT MAX(id) FROM category));`));
     },
 
     down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('brand', null, {});
+        return queryInterface.bulkDelete('category', null, {});
     }
 };

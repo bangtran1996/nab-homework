@@ -22,10 +22,10 @@ module.exports = {
             category_id: 2,
             created_at: new Date(),
             updated_at: new Date()
-        }], {});
+        }], {}).then(() => queryInterface.sequelize.query(`SELECT SETVAL('product_id_seq', (SELECT MAX(id) FROM product));`));
     },
 
     down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('brand', null, {});
+        return queryInterface.bulkDelete('product', null, {});
     }
 };

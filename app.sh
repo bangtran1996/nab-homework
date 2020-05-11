@@ -28,8 +28,7 @@ function module_install() {
 function run_test() {
     echo "Test is running ..."
     docker-compose -f docker/docker-compose.yml up api-test
-    docker-compose -f docker/docker-compose.yml down --remove-orphans
-    docker-compose -f docker/docker-compose.infra.yml down  --remove-orphans
+    docker-compose -f docker/docker-compose.yml stop api-test
 }
 
 function api() {
