@@ -49,7 +49,7 @@ describe('index', () => {
             basedir: path.resolve(__dirname, '..')
         }));
 
-        mockAdminUserID = 1
+        let mockAdminUserID = 1
         graphQLServer = new ApolloServer({
             typeDefs,
             resolvers,
@@ -74,6 +74,7 @@ describe('index', () => {
                 .expect(200)
                 .send({ "username": "diepbang", "password": "123456789" })
                 .end(function (err, res) {
+                    expect(res.body.data).to.not.be.undefined
                     done(err);
                 });
         });

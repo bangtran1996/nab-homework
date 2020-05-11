@@ -32,7 +32,7 @@ module.exports = function (router) {
 
             const token = await userLib.createTokenFromAdmin(admin);
             return res.status(200).json({
-                token
+                data: token,
             });
         } catch (e) {
             return res.status(500).json({
