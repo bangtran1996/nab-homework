@@ -31,6 +31,14 @@ function run_test() {
     docker-compose -f docker/docker-compose.yml stop api-test
 }
 
+function run_migration() {
+    npx sequelize-cli db:migrate
+}
+
+function run_seed() {
+    npx sequelize-cli db:seed:all
+}
+
 function api() {
   case $1 in
   install_module)
@@ -42,6 +50,14 @@ function api() {
   test)
     infra_up
     run_test
+    ;;
+  start)
+    infra_up
+    sleep 5
+    run_migration
+    sleep 5
+    run_seed
+    app_up
     ;;
   up)
     infra_up
