@@ -18,7 +18,8 @@ module.exports = (product) => {
             return product.findOne({
                 where: {
                     id: productId,
-                }
+                },
+                raw: true,
             })
         },
         getByFilters: async (filters) => {

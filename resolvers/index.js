@@ -4,12 +4,17 @@ module.exports = {
         async get_product(_, { productId }, { repos, queue }) {
             try {
                 const product = await repos.Product.getByID(productId);
+                console.log(product);
                 return product;
             } catch (error) {
                 return error;
             } finally {
                 // enqueue save user activity job
-                return queue.createUserActivity({ id: productId, action_type: 'view_detail' })
+                queue.createUserActivity({
+                    productId, action_type: 'view_detail',
+                    createdAt: Date.now(),
+                    updatedAt: Date.now()
+                })
             }
         },
         async list_product(_, { filterInput: filter }, { repos, queue }) {
@@ -20,7 +25,11 @@ module.exports = {
                 return error;
             } finally {
                 // enqueue save user activity job
-                queue.createUserActivity({ filters: '', action_type:'list_product' })
+                queue.createUserActivity({
+                    action_type: 'list_product',
+                    createdAt: Date.now(),
+                    updatedAt: Date.now()
+                })
             }
         },
     },

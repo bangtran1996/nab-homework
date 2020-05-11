@@ -1,6 +1,7 @@
 const appConfig = require('../../config/app');
 const kue = require('kue');
-const
+const repos = require('../repos');
+
 const queue = kue.createQueue({
     ...appConfig.queue,
     redis: appConfig.redis,
@@ -20,7 +21,13 @@ queue.on('error', (err) => {
 });
 
 queue.process('user_activity', (job, done) => {
-    return done();
+    try {
+        const { data } = job;
+        return repos.Activity.create(data).then(done)
+    } catch (e) {
+        console.log('error ',e);
+        return e;
+    }
 });
 
 async function createUserActivity(data) {
