@@ -115,11 +115,14 @@ curl 'http://localhost:8000/graphql/' \
 ```
 
 ### DB Diagram
-![Image of DB Diagram](https://github.com/bangtran1996/nab-homework/blob/master/db_diagram.png)
+![Diagram](https://github.com/bangtran1996/nab-homework/blob/master/db_diagram.png)
 
 
 ### API flow diagram
-![Image of DB Diagram](https://github.com/bangtran1996/nab-homework/blob/master/diagram.png?raw=true)
+![Diagram](https://github.com/bangtran1996/nab-homework/blob/master/diagram.png?raw=true)
+
+### Microservice architecture
+![Diagram](https://www.apollographql.com/docs/graph-manager/c91b402c49986fd9100c3fbaa29b4d19/graph-manager-architecture.png)
 
 
 ### Folder strucle
