@@ -121,7 +121,7 @@ curl 'http://localhost:8000/graphql/' \
 ### API flow diagram
 ![Diagram](https://github.com/bangtran1996/nab-homework/blob/master/diagram.png?raw=true)
 
-### Microservice architecture
+### My proposal microservice architecture in this project
 ![Diagram](https://www.apollographql.com/docs/graph-manager/c91b402c49986fd9100c3fbaa29b4d19/graph-manager-architecture.png)
 
 
