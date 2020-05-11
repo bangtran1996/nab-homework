@@ -1,37 +1,37 @@
 # NAB Coding homework 
 #### Note : Need to run migration and seed before run test 
 ##### Sorry for this inconvenience, usually i will seperate it into seperate docker and database for running test only
-##### Just my schedule little rush, so i don't have time to make everything as i wanted
+##### Just my schedule little rush, so i cant do it, sorry for causing this inconvenience : (.
 
 ### Prerequisite
 1. Docker
-2. Node v10.16.1 or above
+2. Node (v10.16.1 or above)
 3. Redis
 4. PostgresSQL
 
 ### Start app
 1. First run? run this command to start app.
- - ./app.sh api init ( start api docker, db, redis, run migration, seed )
+ - ```./app.sh api init ( start api docker, db, redis, run migration, seed )```
 
 #### Supported commands
 1. Start api 
- - ./app.sh api up ( start api docker only no db, redis )
+ - ```./app.sh api up ( start api docker only no db, redis )```
 
 2. Run migrations
- - ./app.sh api migrate
+ - ```./app.sh api migrate```
 
 3. Run seed
- - ./app.sh api seed
+ - ```./app.sh api seed```
 
 4. Test api
- - ./app.sh api test (need to run migrations and seed first before run test)
+ - ```./app.sh api test (need to run migrations and seed first before run test)```
 
 
 ### GraphQL Playground
 - http://localhost:8000/graphql/
 
 
-### API (Im using GraphQL in this project and admin login in REST APIs)
+### API (Im using GraphQL for user side and REST API admin login)
 #### Get list of products 
 ```
 curl 'http://localhost:8000/graphql/' \
@@ -123,6 +123,9 @@ curl 'http://localhost:8000/graphql/' \
 
 ### My proposal microservice architecture in this project
 ![Diagram](https://www.apollographql.com/docs/graph-manager/c91b402c49986fd9100c3fbaa29b4d19/graph-manager-architecture.png)
+
+## Code strucle flow
+![Diagram](https://www.plantuml.com/plantuml/img/7Ov12eDG34JtEKLku5utYWKfTD7s1a5JAaJpIQBIspUwdE7nPbeFijWM0OWvXB7NYT73jZ73H_G0k120kYigeZWObU_hWHLsppiE57pGhu7wpQwoirMzhc69iZbUVL6VG-s4RXI4Isw8DodM0j3oEkM1Fm00)
 
 
 ### Folder strucle

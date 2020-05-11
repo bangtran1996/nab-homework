@@ -4,7 +4,6 @@ module.exports = {
         async get_product(_, { productId }, { repos, queue }) {
             try {
                 const product = await repos.Product.getByID(productId);
-                console.log(product);
                 return product;
             } catch (error) {
                 return error;
