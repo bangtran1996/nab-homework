@@ -23,6 +23,10 @@ queue.on('error', (err) => {
 queue.process('user_activity', (job, done) => {
     try {
         const { data } = job;
+        // this can get so many information from client and save it into database
+        // like ip, browser, fingperint, device ...
+        // but to implement everything as i wanted, will take quite a lot time.
+        // so i will keep it simple as first
         return repos.Activity.create(data).then(done)
     } catch (e) {
         console.log('error ',e);
