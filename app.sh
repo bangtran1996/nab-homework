@@ -52,11 +52,13 @@ function api() {
     run_test
     ;;
   init)
+    npm install --save-dev sequelize-cli
     infra_up
     sleep 5
     run_migration
     sleep 5
     run_seed
+    rm -rf node_modules
     app_up
     ;;
   up)
